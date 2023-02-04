@@ -27,8 +27,8 @@ defineProps<{
       <p
         v-if="excerpt"
         class="mb-2 overflow-hidden text-sm grid__content-excerpt text-clip"
-        v-html="excerpt"
         >
+        {{ excerpt }}
       </p>
       <NuxtLink
         v-if="slug"

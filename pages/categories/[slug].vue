@@ -6,10 +6,10 @@
     // call wp api
     const { data: categories } = await useWpApi().getCategory(params.slug as string)
     const category = categories.value?.[0]
-    console.log(category)
+    // console.log(category)
 
     // read post in category
-    // const { data: posts } = await useWpApi().getPosts(category.id)
+    const { data: posts } = await useWpApi().getPosts(category.id)
 
     useHead({
         title: `Archive: ${category?.name}`,
@@ -24,9 +24,22 @@
 </script>
 
 <template>
-    <div>
+    <section class="py-10">
+        <div class="container mx-auto">
+            <div class="grid gap-10 sm:grid-cols-3">
+            
+                <BlogGrid
+                v-for="post in posts"
+                :key="post.id"
+                :title="post.title.rendered"
+                :image="post._embedded['wp:featuredmedia'][0]?.source_url"
+                :excerpt="post.excerpt.rendered"
+                :slug="post.slug"
+                ></BlogGrid>
 
-    </div>
+            </div>
+        </div>
+    </section>  
 </template>
 
 

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
-    // ssr: true,
+    // ssr: false, 
+    ssr: true,
 
     app: {
         head: {
@@ -34,17 +34,17 @@ export default defineNuxtConfig({
         },
     },
 
-    modules: [
-        'nuxt-icon'
-      [
+    modules: ['nuxt-icon',
+        [
         // Nuxt Robots
-        '@nuxtjs/robots',
-        {
-          UserAgent: "*",
-          Disallow: "",
-        }
-      ],
+          '@nuxtjs/robots',
+            {
+                UserAgent: "*",
+                Disallow: "",
+            }
+        ],
     ],
+
     runtimeConfig: {
         public: {
             wpUri: process.env.WP_URI,
